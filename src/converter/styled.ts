@@ -7,7 +7,7 @@ export const Converter = styled.div`
   align-items: center;
   gap: 30px;
 `;
-export const CurrencyDetails = styled.div``;
+export const Container = styled.div``;
 
 export const CurrencyHeader = styled.h2``;
 

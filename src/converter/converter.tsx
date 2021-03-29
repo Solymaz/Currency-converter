@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  AmountHeader,
-  CurrencyHeader,
-  Converter,
-  CurrencyDetails,
-  Currencies,
-  Currency,
-  Amount,
-} from "./styled";
+import CurrencyDetails from "./currencyDetails";
+import { Converter } from "./styled";
 
 type TCurrenciesCodeRate = {
   [key: string]: number;
@@ -20,7 +13,7 @@ type TCountriesDetails = {
   symbol: string;
 };
 
-type TCurrenciesDetails = {
+export type TCurrenciesDetails = {
   code: string;
   name: string;
   rate: number;
@@ -73,24 +66,8 @@ export default function CurrencyConverter() {
 
   return (
     <Converter>
-      <CurrencyDetails>
-        <CurrencyHeader>Currency I Have:</CurrencyHeader>
-        <Currencies>
-          {currenciesDetails.map((currencyDetail) => (
-            <Currency key={currencyDetail.code}>{currencyDetail.name}</Currency>
-          ))}
-        </Currencies>
-        <AmountHeader>Amount:</AmountHeader>
-        <Amount></Amount>
-      </CurrencyDetails>
-      <CurrencyDetails>
-        <CurrencyHeader>Currency I Want:</CurrencyHeader>
-        <Currencies>
-          <Currency></Currency>
-        </Currencies>
-        <AmountHeader>Amount:</AmountHeader>
-        <Amount></Amount>
-      </CurrencyDetails>
+      <CurrencyDetails currenciesDetails={currenciesDetails} />
+      <CurrencyDetails currenciesDetails={currenciesDetails} />
     </Converter>
   );
 }
