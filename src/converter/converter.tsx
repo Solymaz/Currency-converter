@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import {
   AmountHeader,
   CurrencyHeader,
@@ -10,6 +11,13 @@ import {
 } from "./styled";
 
 export default function CurrencyConverter() {
+
+  //fetch the currency data on load 
+  useEffect(() => {
+    const currenciesApiUrl = `http://data.fixer.io/api/latest?access_key=0e99bcf06781539a85115ed4a10a18fe&format=1`;
+    axios.get(currenciesApiUrl);
+  }, []);
+
   return (
     <Converter>
       <CurrencyDetails>
