@@ -31,6 +31,7 @@ export default function CurrencyConverter() {
     TCurrenciesDetails[]
   >([]);
 
+
   //fetch the currency data on load and save it from the results
   useEffect(() => {
     const currenciesApiUrl = `http://data.fixer.io/api/latest?access_key=0e99bcf06781539a85115ed4a10a18fe&format=1`;
@@ -66,8 +67,14 @@ export default function CurrencyConverter() {
 
   return (
     <Converter>
-      <CurrencyDetails currenciesDetails={currenciesDetails} />
-      <CurrencyDetails currenciesDetails={currenciesDetails} />
+      <CurrencyDetails
+        currenciesDetails={currenciesDetails}
+        header={"Currency I Have:"}
+      />
+      <CurrencyDetails
+        currenciesDetails={currenciesDetails}
+        header={"Currency I Want:"}
+      />
     </Converter>
   );
 }

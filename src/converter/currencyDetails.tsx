@@ -11,13 +11,14 @@ import {
 
 interface Props {
   currenciesDetails: TCurrenciesDetails[];
+  header: string;
 }
 
-export default function CurrencyDetails({ currenciesDetails }: Props) {
+export default function CurrencyDetails({ currenciesDetails, header }: Props) {
   const [currencyCode, setCurrencyCode] = useState();
   return (
     <Container>
-      <CurrencyHeader>Currency I Have:</CurrencyHeader>
+      <CurrencyHeader>{header}</CurrencyHeader>
       <Currencies onChange={(event) => setCurrencyCode(event.target.value)}>
         <Currency default value="">
           Select ...
