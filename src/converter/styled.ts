@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Converter = styled.div`
   display: flex;
@@ -18,3 +19,7 @@ export const Currency = styled.option``;
 export const AmountHeader = styled.h3``;
 
 export const Amount = styled.input``;
+
+export const Arrow = styled(FontAwesomeIcon)`
+  cursor: pointer;
+`;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CurrencyDetails from "./currencyDetails";
-import { Converter } from "./styled";
+import { Arrow, Converter } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
 type TCurrenciesCodeRate = {
   [key: string]: number;
@@ -101,14 +101,24 @@ export default function CurrencyConverter() {
             currenciesDetails={currenciesDetails}
             header={"Currency I Have:"}
             setCurrencyDetail={setCurrencyDetailFrom}
+            selectedCurrencyDetail={currencyDetailFrom}
             amount={amount}
             setAmount={setAmount}
+          />
+          <Arrow
+            size="2x"
+            icon={faExchangeAlt}
+            onClick={() => {
+              setCurrencyDetailFrom(currencyDetailTo),
+                setCurrencyDetailTo(currencyDetailFrom);
+            }}
           />
           <CurrencyDetails
             currenciesDetails={currenciesDetails}
             header={"Currency I Want:"}
             disabledInput
             setCurrencyDetail={setCurrencyDetailTo}
+            selectedCurrencyDetail={currencyDetailTo}
             amount={result}
           />
         </>

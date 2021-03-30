@@ -14,6 +14,7 @@ interface Props {
   header: string;
   disabledInput?: boolean;
   setCurrencyDetail: (value?: TCurrenciesDetails) => void;
+  selectedCurrencyDetail?: TCurrenciesDetails;
   amount?: number;
   setAmount?: (value: number) => void;
 }
@@ -23,6 +24,7 @@ export default function CurrencyDetails({
   header,
   disabledInput,
   setCurrencyDetail,
+  selectedCurrencyDetail,
   amount,
   setAmount,
 }: Props) {
@@ -39,6 +41,7 @@ export default function CurrencyDetails({
     <Container>
       <CurrencyHeader>{header}</CurrencyHeader>
       <Currencies
+        value={selectedCurrencyDetail?.code}
         onChange={(event) => {
           setCurrencyCode(event.target.value);
           setCurrencyDetail(
@@ -60,7 +63,9 @@ export default function CurrencyDetails({
         disabled={disabledInput}
         value={amount}
       ></Amount>
-      <span>{currencyCode}</span>
+      <span>
+        {selectedCurrencyDetail ? selectedCurrencyDetail.code : currencyCode}
+      </span>
     </Container>
   );
 }
