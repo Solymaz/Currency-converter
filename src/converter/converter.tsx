@@ -24,21 +24,28 @@ export default function CurrencyConverter() {
     currenciesCodeRate,
     setCurrenciesCodeRate,
   ] = useState<TCurrenciesCodeRate>({});
+
   const [countriesDetails, setCountriesDetails] = useState<TCountriesDetails[]>(
     []
   );
+
   const [currenciesDetails, setCurrenciesDetails] = useState<
     TCurrenciesDetails[]
   >([]);
+
   const [
     currencyDetailFrom,
     setCurrencyDetailFrom,
   ] = useState<TCurrenciesDetails>();
+
   const [
     currencyDetailTo,
     setCurrencyDetailTo,
   ] = useState<TCurrenciesDetails>();
+
   const [amount, setAmount] = useState<number>();
+
+  const [result, setResult] = useState<number>();
 
   //fetch the currency data on load and save it from the results
   useEffect(() => {
@@ -73,6 +80,17 @@ export default function CurrencyConverter() {
     }
   }, [currenciesCodeRate, countriesDetails]);
 
+  // convert currency and show 2 decimals
+  useEffect(() => {
+    if (amount && currencyDetailFrom && currencyDetailTo) {
+      const result =
+        Math.round(
+          (amount / currencyDetailFrom.rate) * currencyDetailTo.rate * 100
+        ) / 100;
+      setResult(result);
+    }
+  }, [amount, currencyDetailFrom, currencyDetailTo]);
+
   return (
     <Converter>
       <CurrencyDetails
@@ -87,6 +105,7 @@ export default function CurrencyConverter() {
         header={"Currency I Want:"}
         disabledInput
         setCurrencyDetail={setCurrencyDetailTo}
+        amount={result}
       />
     </Converter>
   );
