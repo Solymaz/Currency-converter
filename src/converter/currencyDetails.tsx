@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TCurrenciesDetails } from "./converter";
 import {
   AmountHeader,
@@ -27,6 +27,13 @@ export default function CurrencyDetails({
   setAmount,
 }: Props) {
   const [currencyCode, setCurrencyCode] = useState<string>();
+
+  useEffect(() => {
+    if (currenciesDetails && currenciesDetails.length > 0) {
+      setCurrencyCode(currenciesDetails[0].code);
+      setCurrencyDetail(currenciesDetails[0]);
+    }
+  }, [currenciesDetails]);
 
   return (
     <Container>
