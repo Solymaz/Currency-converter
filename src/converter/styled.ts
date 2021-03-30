@@ -11,9 +11,6 @@ export const Converter = styled.div`
     flex-direction: column;
   }
 `;
-export const Container = styled.div``;
-
-export const CurrencyHeader = styled.h2``;
 
 export const Currencies = styled.select`
   height: 30px;
@@ -21,9 +18,6 @@ export const Currencies = styled.select`
   width: 300px;
 `;
 
-export const Currency = styled.option``;
-
-export const AmountHeader = styled.h3``;
 
 export const Amount = styled.input`
   margin: 0;

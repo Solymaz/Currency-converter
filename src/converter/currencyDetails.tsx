@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TCurrenciesDetails } from "./converter";
-import {
-  AmountHeader,
-  CurrencyHeader,
-  Container,
-  Currencies,
-  Currency,
-  Amount,
-  Wrapper,
-  CurrencyCode,
-  Label,
-} from "./styled";
+import { Currencies, Amount, Wrapper, CurrencyCode, Label } from "./styled";
 
 interface Props {
   currenciesDetails: TCurrenciesDetails[];
@@ -41,8 +31,8 @@ export default function CurrencyDetails({
   }, [currenciesDetails]);
 
   return (
-    <Container>
-      <CurrencyHeader>{header}</CurrencyHeader>
+    <div>
+      <h2>{header}</h2>
       <Currencies
         value={selectedCurrencyDetail?.code}
         onChange={(event) => {
@@ -55,18 +45,20 @@ export default function CurrencyDetails({
         }}
       >
         {currenciesDetails.map((currencyDetail) => (
-          <Currency key={currencyDetail.code} value={currencyDetail.code}>
+          <option key={currencyDetail.code} value={currencyDetail.code}>
             {currencyDetail.name}
-          </Currency>
+          </option>
         ))}
       </Currencies>
-      <AmountHeader>Amount:</AmountHeader>
+      <h3>Amount:</h3>
       <Wrapper>
         {showLabel ? (
           <Label>{amount ? amount : ""}</Label>
         ) : (
           <Amount
-            onChange={(event) => setAmount && setAmount(event.target.value)}
+            onChange={(event) => {
+              setAmount && setAmount(event.target.value);
+            }}
             value={amount}
             type="number"
           ></Amount>
@@ -75,6 +67,6 @@ export default function CurrencyDetails({
           {selectedCurrencyDetail ? selectedCurrencyDetail.code : currencyCode}
         </CurrencyCode>
       </Wrapper>
-    </Container>
+    </div>
   );
 }
