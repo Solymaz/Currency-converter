@@ -28,7 +28,7 @@ export const AmountHeader = styled.h3``;
 export const Amount = styled.input`
   margin: 0;
   padding: 0px;
-  width: 300px;
+  width: 293px;
   height: 28px;
   border-radius: 5px;
   border: solid 1px;
@@ -55,6 +55,9 @@ export const Arrow = styled(FontAwesomeIcon)`
   @media only screen and (max-width: 700px) {
     margin-top: 20px;
     transform: rotate(90deg);
+    :hover {
+      transform: rotate(90deg);
+    }
   }
 `;
 
@@ -67,4 +70,13 @@ export const CurrencyCode = styled.span`
   right: 5px;
   line-height: 30px;
   font-weight: bold;
+  top: 0;
+`;
+
+export const Label = styled.div`
+  height: 28px;
+  border-bottom: solid 2px;
+  display: block;
+  width: 300px;
+  line-height: 28px;
 `;

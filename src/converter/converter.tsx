@@ -124,7 +124,7 @@ export default function CurrencyConverter() {
           <CurrencyDetails
             currenciesDetails={currenciesDetails}
             header={"Currency I Want:"}
-            disabledInput
+            showLabel
             setCurrencyDetail={setCurrencyDetailTo}
             selectedCurrencyDetail={currencyDetailTo}
             amount={result}

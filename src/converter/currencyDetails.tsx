@@ -9,12 +9,13 @@ import {
   Amount,
   Wrapper,
   CurrencyCode,
+  Label,
 } from "./styled";
 
 interface Props {
   currenciesDetails: TCurrenciesDetails[];
   header: string;
-  disabledInput?: boolean;
+  showLabel?: boolean;
   setCurrencyDetail: (value?: TCurrenciesDetails) => void;
   selectedCurrencyDetail?: TCurrenciesDetails;
   amount?: number;
@@ -24,7 +25,7 @@ interface Props {
 export default function CurrencyDetails({
   currenciesDetails,
   header,
-  disabledInput,
+  showLabel,
   setCurrencyDetail,
   selectedCurrencyDetail,
   amount,
@@ -61,12 +62,15 @@ export default function CurrencyDetails({
       </Currencies>
       <AmountHeader>Amount:</AmountHeader>
       <Wrapper>
-        <Amount
-          onChange={(event) => setAmount && setAmount(event.target.value)}
-          disabled={disabledInput}
-          value={amount ? amount : ""}
-          type="number"
-        ></Amount>
+        {showLabel ? (
+          <Label>{amount ? amount : ""}</Label>
+        ) : (
+          <Amount
+            onChange={(event) => setAmount && setAmount(event.target.value)}
+            value={amount}
+            type="number"
+          ></Amount>
+        )}
         <CurrencyCode>
           {selectedCurrencyDetail ? selectedCurrencyDetail.code : currencyCode}
         </CurrencyCode>
