@@ -82,6 +82,14 @@ export default function CurrencyConverter() {
     }
   }, [currenciesCodeRate, countriesDetails]);
 
+
+  // reset the To input 
+  useEffect(() => {
+    if (!amount) {
+      setResult(undefined);
+    }
+  }, [amount]);
+
   // convert currency and show 2 decimals
   useEffect(() => {
     if (amount && currencyDetailFrom && currencyDetailTo) {

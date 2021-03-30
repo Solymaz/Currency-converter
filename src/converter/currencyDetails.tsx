@@ -7,6 +7,8 @@ import {
   Currencies,
   Currency,
   Amount,
+  Wrapper,
+  CurrencyCode,
 } from "./styled";
 
 interface Props {
@@ -58,14 +60,17 @@ export default function CurrencyDetails({
         ))}
       </Currencies>
       <AmountHeader>Amount:</AmountHeader>
-      <Amount
-        onChange={(event) => setAmount && setAmount(event.target.value)}
-        disabled={disabledInput}
-        value={amount}
-      ></Amount>
-      <span>
-        {selectedCurrencyDetail ? selectedCurrencyDetail.code : currencyCode}
-      </span>
+      <Wrapper>
+        <Amount
+          onChange={(event) => setAmount && setAmount(event.target.value)}
+          disabled={disabledInput}
+          value={amount ? amount : ""}
+          type="number"
+        ></Amount>
+        <CurrencyCode>
+          {selectedCurrencyDetail ? selectedCurrencyDetail.code : currencyCode}
+        </CurrencyCode>
+      </Wrapper>
     </Container>
   );
 }
