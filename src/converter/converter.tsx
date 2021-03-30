@@ -30,7 +30,15 @@ export default function CurrencyConverter() {
   const [currenciesDetails, setCurrenciesDetails] = useState<
     TCurrenciesDetails[]
   >([]);
-
+  const [
+    currencyDetailFrom,
+    setCurrencyDetailFrom,
+  ] = useState<TCurrenciesDetails>();
+  const [
+    currencyDetailTo,
+    setCurrencyDetailTo,
+  ] = useState<TCurrenciesDetails>();
+  const [amount, setAmount] = useState<number>();
 
   //fetch the currency data on load and save it from the results
   useEffect(() => {
@@ -70,10 +78,15 @@ export default function CurrencyConverter() {
       <CurrencyDetails
         currenciesDetails={currenciesDetails}
         header={"Currency I Have:"}
+        setCurrencyDetail={setCurrencyDetailFrom}
+        amount={amount}
+        setAmount={setAmount}
       />
       <CurrencyDetails
         currenciesDetails={currenciesDetails}
         header={"Currency I Want:"}
+        disabledInput
+        setCurrencyDetail={setCurrencyDetailTo}
       />
     </Converter>
   );
