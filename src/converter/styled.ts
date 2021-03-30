@@ -7,6 +7,9 @@ export const Converter = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 export const Container = styled.div``;
 
@@ -48,6 +51,10 @@ export const Arrow = styled(FontAwesomeIcon)`
   margin-top: 70px;
   :hover {
     transform: scale(1.1);
+  }
+  @media only screen and (max-width: 700px) {
+    margin-top: 20px;
+    transform: rotate(90deg);
   }
 `;
 
