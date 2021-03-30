@@ -1,31 +1,23 @@
 # Currency converter
 
-<a href="http://www.valuta.se">
-  <img alt="Valuta" src="media/valuta.png" width="480">
-</a>
+With the help of this app, user can change any amount of supported currencies to each other.
 
-_This image is meant to explain the functionality_
+## How to configure
+Run `npm i` 
 
-## Task
+## How to run locally
 
-Create a small react app that let the user convert an amount between currencies.
+Run `npm start`
 
-This project can be used as a starter. To get started simply clone this repo and run `npm install` and `npm start`
+## Technologies
 
-Styling is not important in this test and it's okay to use eg. bootstrap. For your custom styles we encourage you to use [Styled components 💅](https://github.com/styled-components/styled-components)
+- Typescript
+- styled-component
+- ReactJS
 
-To get exchange rates you can use [fixer.io](https://fixer.io/). (You need to create an account to get a free access key)
-
-### Desired techniques
-
-- TypeScript
-- Styled components
-
-To submit the test, simply push your branch and make a pull request to master.
-
-### Requirements
-
-- You should be able to convert an amount in one currency to another.
-- You should be able to change what currencies to convert between.
-
-Good luck!
+## ToDo
+- Show the flag of the corresponding country 
+- Sorting the list of the currencies alphabetically
+- Error handling
+- Use react-select instead to have more control over the options style and dropdown 
+- Secure API key
