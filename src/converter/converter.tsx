@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CurrencyDetails from "./currencyDetails";
 import { Converter } from "./styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 type TCurrenciesCodeRate = {
   [key: string]: number;
@@ -64,7 +66,7 @@ export default function CurrencyConverter() {
 
   //combine the currency code with currency name and the rate
   useEffect(() => {
-    if (currenciesCodeRate && countriesDetails) {
+    if (currenciesCodeRate && countriesDetails.length > 0) {
       setCurrenciesDetails(
         Object.entries(currenciesCodeRate).map(([code, rate]) => {
           const currency = countriesDetails.find(
@@ -93,20 +95,26 @@ export default function CurrencyConverter() {
 
   return (
     <Converter>
-      <CurrencyDetails
-        currenciesDetails={currenciesDetails}
-        header={"Currency I Have:"}
-        setCurrencyDetail={setCurrencyDetailFrom}
-        amount={amount}
-        setAmount={setAmount}
-      />
-      <CurrencyDetails
-        currenciesDetails={currenciesDetails}
-        header={"Currency I Want:"}
-        disabledInput
-        setCurrencyDetail={setCurrencyDetailTo}
-        amount={result}
-      />
+      {currenciesDetails.length > 0 ? (
+        <>
+          <CurrencyDetails
+            currenciesDetails={currenciesDetails}
+            header={"Currency I Have:"}
+            setCurrencyDetail={setCurrencyDetailFrom}
+            amount={amount}
+            setAmount={setAmount}
+          />
+          <CurrencyDetails
+            currenciesDetails={currenciesDetails}
+            header={"Currency I Want:"}
+            disabledInput
+            setCurrencyDetail={setCurrencyDetailTo}
+            amount={result}
+          />
+        </>
+      ) : (
+        <FontAwesomeIcon spin size="3x" icon={faSpinner} />
+      )}
     </Converter>
   );
 }
